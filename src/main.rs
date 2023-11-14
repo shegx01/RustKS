@@ -22,10 +22,19 @@ fn main() {
 
     //  getting part of the array
     let res2 = res[2..=5].to_vec();
-    let res3 = res.clone().get_mut(2).unwrap_or_default();
+    let res3 = res.clone().get_mut(2).unwrap();
 
+    let mut months = vec!["July", "August", "September", "November", "October"];
+    months.swap(3, 4);
+
+    let slice1 = [1, 2, 3, 4];
+    let slice2 = [1, 2, 3, 4];
     println!("{:?}", hd);
     println!("{:?}", res2);
     println!("{:?}", arr);
     println!("{:?}", &res[0]);
+    println!("Months are {:?}", months);
+
+    let equal = if slice1 == slice2 { "Yes" } else { "No" };
+    println!("Are they equal? {}", equal)
 }
