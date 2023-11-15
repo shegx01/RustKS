@@ -1,7 +1,6 @@
 use std::collections::HashMap;
 
 fn main() {
-    use std::collections::HashMap;
     // let arr = [0u8; 20];
     let arr = vec![0u8; 20];
     let res: Vec<u8> = arr.iter().map(|a| a + 2).collect();
