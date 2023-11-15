@@ -10,12 +10,12 @@ fn main() {
     // though reference
     // let hd = &arr[0];
     // copy the index value NOTE!: Copy trait must be implemented
-    let hd = arr[0];
+    let _hd = arr[0];
 
     let data: Vec<&str> = vec!["Hello", "World"];
 
     // reference the head
-    let hd = data[0];
+    let _hd = data[0];
 
     // The Slice f.first returns an Option<&T>
     // .unwrap() is needed to extract the actual value if you are sure it wont panic
@@ -25,7 +25,7 @@ fn main() {
 
     //  getting part of the array
     let res2 = res[2..=5].to_vec();
-    let res3 = res.clone().get_mut(2).unwrap();
+    let _res3 = res.clone().get_mut(2).unwrap();
 
     let mut months = vec!["July", "August", "September", "November", "October"];
     months.swap(3, 4);
