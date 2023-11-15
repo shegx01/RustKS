@@ -1,4 +1,7 @@
+use std::collections::HashMap;
+
 fn main() {
+    use std::collections::HashMap;
     // let arr = [0u8; 20];
     let arr = vec![0u8; 20];
     let res: Vec<u8> = arr.iter().map(|a| a + 2).collect();
@@ -34,6 +37,17 @@ fn main() {
     println!("{:?}", arr);
     println!("{:?}", &res[0]);
     println!("Months are {:?}", months);
+
+    let mut map = HashMap::new();
+
+    map.insert("u", 21);
+
+    map.insert("w", 16);
+
+    println!("Map contains: {:?}", map);
+
+    let entry = map.entry("x").or_insert(90);
+    println!("Returned entry is: {:?}", entry);
 
     let equal = if slice1 == slice2 { "Yes" } else { "No" };
     println!("Are they equal? {}", equal)
