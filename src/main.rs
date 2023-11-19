@@ -1,53 +1,19 @@
-use std::collections::HashMap;
-
 fn main() {
-    // let arr = [0u8; 20];
-    let arr = vec![0u8; 20];
-    let res: Vec<u8> = arr.iter().map(|a| a + 2).collect();
+    println!("{}", crate::sum_of_digits(221432784576))
+}
 
-    // get the ith element
-    // though reference
-    // let hd = &arr[0];
-    // copy the index value NOTE!: Copy trait must be implemented
-    let _hd = arr[0];
+pub fn sum_of_digits(num: u64) -> u64 {
+    // for an input that is 21,
+    // 1 + 2 + 0
+    return if num == 0 {
+        0
+    } else {
+        (num % 10) + sum_of_digits(num / 10)
+    };
 
-    let data: Vec<&str> = vec!["Hello", "World"];
-
-    // reference the head
-    let _hd = data[0];
-
-    // The Slice f.first returns an Option<&T>
-    // .unwrap() is needed to extract the actual value if you are sure it wont panic
-
-    // cloning the
-    let hd = data[0].clone();
-
-    //  getting part of the array
-    let res2 = res[2..=5].to_vec();
-    let _res3 = res.clone().get_mut(2).unwrap();
-
-    let mut months = vec!["July", "August", "September", "November", "October"];
-    months.swap(3, 4);
-
-    let slice1 = [1, 2, 3, 4];
-    let slice2 = [1, 2, 3, 4];
-    println!("{:?}", hd);
-    println!("{:?}", res2);
-    println!("{:?}", arr);
-    println!("{:?}", &res[0]);
-    println!("Months are {:?}", months);
-
-    let mut map = HashMap::new();
-
-    map.insert("u", 21);
-
-    map.insert("w", 16);
-
-    println!("Map contains: {:?}", map);
-
-    let entry = map.entry("x").or_insert(90);
-    println!("Returned entry is: {:?}", entry);
-
-    let equal = if slice1 == slice2 { "Yes" } else { "No" };
-    println!("Are they equal? {}", equal)
+    // Elixir Version
+    // require Integer
+    // def sum_of_digit(n) when is_integer(n) and n >= 0, do: sum_digit(n)
+    // defp sum_digit(0), do: 0
+    // defp sum_digit(n), do: Integer.mod(n, 10) + sum_digit(div(n, 10))
 }
