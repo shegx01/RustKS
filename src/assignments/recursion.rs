@@ -25,8 +25,11 @@ pub fn sum_of_digits_optimized(n: u64) -> u64 {
 }
 
 pub fn pow_rec(base: u64, exp: u32) -> u64 {
-   return if exp == 0 { 1 }
-    else { base * pow(base, exp -1) as u64 }
+    return if exp == 0 {
+        1
+    } else {
+        base * pow(base, exp - 1) as u64
+    };
 }
 
 pub fn pow(base: u64, exp: u32) -> u64 {
@@ -37,11 +40,24 @@ pub fn pow(base: u64, exp: u32) -> u64 {
             result
         } else {
             calc_pow(base, exp - 1, result * base)
-        }
+        };
     }
 
     calc_pow(base, exp, 1)
 }
+
+pub fn gcd(dividend: u64, divisor: u64) -> u64 {
+    // Popular Euclidean algorithm
+    return if divisor == 0 {
+        dividend
+    } else {
+        gcd(divisor, dividend % divisor)
+    };
+}
+
+// ###########################
+// @@@@@@@@@ Tests @@@@@@@@@@
+// ##########################
 #[test]
 fn sum_of_digits_rec_test() {
     assert_eq!(sum_of_digits(21), 3);
@@ -61,9 +77,16 @@ pub fn pow_test_rec() {
     assert_eq!(pow_rec(3, 3), 27)
 }
 
-
 #[test]
 pub fn pow_test() {
     assert_eq!(pow(2, 4), 16);
     assert_eq!(pow(3, 3), 27)
+}
+
+#[test]
+pub fn gcd_test() {
+    assert_eq!(gcd(20, 14), 2);
+    assert_eq!(gcd(232, 80), 8);
+    assert_eq!(gcd(8, 12), 4);
+    assert_eq!(gcd(48, 18), 6)
 }

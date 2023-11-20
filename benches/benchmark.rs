@@ -18,5 +18,11 @@ pub fn pow(c: &mut Criterion) -> &mut Criterion {
     })
 }
 
-criterion_group!(benches, sum_of_digits_rec, pow);
+pub fn gcd(c: &mut Criterion) -> &mut Criterion {
+    c.bench_function("gcd", |b| {
+        b.iter(|| assignments::gcd(black_box(32), black_box(12)))
+    })
+}
+
+criterion_group!(benches, sum_of_digits_rec, pow, gcd);
 criterion_main!(benches);
