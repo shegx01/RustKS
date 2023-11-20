@@ -55,6 +55,17 @@ pub fn gcd(dividend: u64, divisor: u64) -> u64 {
     };
 }
 
+pub fn decimal_to_binary(num: u64) -> u64 {
+    // when quotient is 0, division is over
+    return if num == 0 {
+        0
+    } else {
+        // divide our number by 2 to get quotient and feed it back to the rec
+        // Then compute the binary from bottom up
+        num % 2 + 10 * decimal_to_binary(num / 2)
+    };
+}
+
 // ###########################
 // @@@@@@@@@ Tests @@@@@@@@@@
 // ##########################
@@ -89,4 +100,9 @@ pub fn gcd_test() {
     assert_eq!(gcd(232, 80), 8);
     assert_eq!(gcd(8, 12), 4);
     assert_eq!(gcd(48, 18), 6)
+}
+#[test]
+pub fn decimal_to_binary_test() {
+    assert_eq!(decimal_to_binary(200), 11001000);
+    assert_eq!(decimal_to_binary(12), 1100);
 }
