@@ -106,3 +106,35 @@ pub fn decimal_to_binary_test() {
     assert_eq!(decimal_to_binary(200), 11001000);
     assert_eq!(decimal_to_binary(12), 1100);
 }
+
+fn sum_of_digit(num: u64) -> u64 {
+    return if num == 0 {
+        0
+    } else {
+        num % 10 + sum_of_digits(num / 10)
+    };
+}
+
+fn pow2(num: u64, exp: u64) -> u64 {
+    return if exp == 1 {
+        num
+    } else {
+        num * pow2(num, exp - 1)
+    };
+}
+
+fn gcd2(dividend: u64, divisor: u64) -> u64 {
+    return if divisor == 0 {
+        dividend
+    } else {
+        return gcd2(divisor, dividend % divisor);
+    };
+}
+
+fn decimal_to_binary2(num: u64) -> u64 {
+    return if num == 0 {
+        0
+    } else {
+        num % 10 + 10 * decimal_to_binary2(num / 10)
+    };
+}
