@@ -14,7 +14,10 @@ fn insertion_sort(arr: &mut Vec<i32>) {
                     _ => (),
                 }
             }
-            arr.swap(outer, elem);
+            match elem.cmp(&outer) {
+                Ordering::Equal => (),
+                _ => arr.swap(outer, elem),
+            }
             outer += 1;
         }
     };
