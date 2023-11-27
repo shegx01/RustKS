@@ -8,7 +8,7 @@ fn insertion_sort(arr: &mut Vec<i32>) {
         let length = arr.len() - 1;
         while outer != length {
             let mut elem = outer;
-            for i in outer..=length {
+            for i in (outer + 1)..=length {
                 match arr[i].cmp(&arr[elem]) {
                     Ordering::Less => elem = i,
                     _ => (),
