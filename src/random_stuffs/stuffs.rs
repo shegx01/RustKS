@@ -4,3 +4,7 @@ fn xor_swap<T: Copy>(left: &mut T, right: &mut T) {
     *right = *right ^ *left;
     *left = *left ^ *right;
 }
+
+fn is_power_of_two(num: i32) -> bool {
+    (num & num - 1) == 0
+}
